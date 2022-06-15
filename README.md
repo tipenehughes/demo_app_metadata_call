@@ -22,7 +22,7 @@ git clone https://github.com/example.git
 ```
 zcli apps:package
 ```
-4. Upload the app to your Zendesk account and install. You will be prompted to enter an optional form name of your choosing, and enable or disable role retrictions. These are example installation settings defined under parameters in the `manifest.json` file.
+4. Upload the app to your Zendesk account and install. You will be prompted to enter an optional form name of your choosing, and enable or disable role restrictions. These are example installation settings defined under parameters in the `manifest.json` file.
 
 [Uploading and installing a private app](https://developer.zendesk.com/documentation/apps/getting-started/uploading-and-installing-a-private-app/)
 
