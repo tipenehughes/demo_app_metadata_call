@@ -15,7 +15,7 @@ async function getMetaData() {
 	const metadata = await client.metadata();
 	console.log("metadata:", metadata);
 
-	// Assigning the installationId to be used in setMetaData().
+	// Assigning the installationId to be used in setMetaData()
 	installationId = metadata["installationId"];
 	console.log("installationId:", metadata["installationId"]);
 
