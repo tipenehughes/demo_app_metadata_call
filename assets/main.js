@@ -31,9 +31,9 @@ async function getMetaData() {
 	setCheckbox(role_restriction);
 }
 
-// Sets the checkbox.checked value based on role_restriction passed in freom getMetaData()
+// Sets the checkbox.checked value based on role_restriction passed in from getMetaData()
 function setCheckbox(checkboxState) {
-	if (checkboxState == true) {
+	if (checkboxState === true) {
 		return (myCheckbox.checked = true);
 	} else {
 		return (myCheckbox.checked = false);
