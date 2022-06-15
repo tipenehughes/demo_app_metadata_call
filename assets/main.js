@@ -11,6 +11,7 @@ const formName = document.getElementById("formName");
 const myCheckbox = document.getElementById("myCheckbox");
 
 async function getMetaData() {
+	// Get app metadata
 	const metadata = await client.metadata();
 	console.log("metadata:", metadata);
 
@@ -56,8 +57,10 @@ async function setMetaData() {
 	// Update app settings and display result.
 	try {
 		const updateSettings = await client.request(updateSettingsConfig);
+		client.invoke("notify", "Metadata succesfullly updated");
 		console.log("Success:", updateSettings);
 	} catch (err) {
+		client.invoke("notify", `Error: ${err.responseText}`, "error");
 		console.log("Error:", err);
 	}
 }
