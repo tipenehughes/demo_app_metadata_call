@@ -22,9 +22,11 @@ git clone https://github.com/example.git
 ```
 zcli apps:package
 ```
-4. Upload the app to your Zendesk account and install
+4. Upload the app to your Zendesk account and install. You will be prompted to enter an optional form name of your choosing, and enable or disable role retrictions. These are example installation settings defined under parameters in the `manifest.json` file.
 
 [Uploading and installing a private app](https://developer.zendesk.com/documentation/apps/getting-started/uploading-and-installing-a-private-app/)
+
+[Defining installation settings](https://developer.zendesk.com/documentation/apps/app-developer-guide/setup/#defining-installation-settings)
 
 ## NOTE:
 * Despite the app successfully updating metadata/setting values, because these values are cached by ZAF at app load time, you need to do an app refresh. This reloads the app and gets the updated values via subsequent client.metadata() calls.
@@ -35,6 +37,7 @@ zcli apps:package
 
 - [Zendesk Apps Guide](https://developer.zendesk.com/documentation/apps/)
 - [ZAF API documentation](https://developer.zendesk.com/api-reference/apps/apps-support-api/introduction/)
+- [Manifest Reference - Parameters](https://developer.zendesk.com/documentation/apps/app-developer-guide/manifest/#parameters)
 
 <!-- Issue reporting with link to repo issues page -->
 ## Issues
