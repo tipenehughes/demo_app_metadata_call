@@ -1,7 +1,7 @@
 const client = ZAFClient.init();
 client.invoke("resize", { width: "100%", height: "300px" });
 
-// Don't know app's Installation ID yet.
+// initializing the installationId
 let installationId = 0;
 
 // Name input field
@@ -14,7 +14,7 @@ async function getMetaData() {
 	const metadata = await client.metadata();
 	console.log("metadata:", metadata);
 
-	// Need Installation ID when saving later.
+	// Assigning the installationId to be used in setMetaData().
 	installationId = metadata["installationId"];
 	console.log("installationId:", metadata["installationId"]);
 
@@ -23,11 +23,16 @@ async function getMetaData() {
 	console.log("form_name:", metadata.settings["form_name"]);
 
 	// Get and display app setting called "enable_role_restriction" of type "checkbox"
-	let role_restriciton = metadata.settings["enable_role_restriction"];
-	console.log("enable_role_restriction:", role_restriciton);
+	let role_restriction = metadata.settings["enable_role_restriction"];
+	console.log("enable_role_restriction:", role_restriction);
 
 	// Set state of checkbox in the app UI
-	if (role_restriciton == true) {
+	setCheckbox(role_restriction);
+}
+
+// Sets the checkbox.checked value based on role_restriction passed in freom getMetaData()
+function setCheckbox(checkboxState) {
+	if (checkboxState == true) {
 		return (myCheckbox.checked = true);
 	} else {
 		return (myCheckbox.checked = false);
@@ -35,12 +40,10 @@ async function getMetaData() {
 }
 
 async function setMetaData() {
-
 	// Get new values from user for form_name and enable_role_restriction app setting fields.
 	const newFormName = formName.value;
 	const newCheckboxValue = myCheckbox.checked;
 	const data = { settings: { form_name: newFormName, enable_role_restriction: newCheckboxValue } };
-	console.log("data:", data);
 
 	const updateSettingsConfig = {
 		url: `/api/v2/apps/installations/${installationId}.json`,
@@ -51,6 +54,10 @@ async function setMetaData() {
 	};
 
 	// Update app settings and display result.
-	const updateSettings = await client.request(updateSettingsConfig);
-	console.log("Result:", updateSettings);
+	try {
+		const updateSettings = await client.request(updateSettingsConfig);
+		console.log("Success:", updateSettings);
+	} catch (err) {
+		console.log("Error:", err);
+	}
 }
